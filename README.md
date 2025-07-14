@@ -3,6 +3,10 @@
 A lightweight, responsive image slider built with plain HTML, CSS and JavaScript.  
 No external dependencies—just drop in your images and open `index.html`.
 
+## preview
+<img width="1354" height="863" alt="image" src="https://github.com/user-attachments/assets/1ceb0126-5a6b-4282-ab60-71801478e87b" />
+
+
 ## Features
 
 - **Smooth transitions** using `translateX`
