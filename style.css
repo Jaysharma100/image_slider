@@ -1,0 +1,110 @@
+* { box-sizing: border-box; margin:0; padding:0; }
+body {
+  display:flex; align-items:center; justify-content:center;
+  min-height:100vh; background:#f0f0f5;
+  font-family: 'Segoe UI', sans-serif;
+  flex-direction: column;
+}
+.slider {
+  position: relative;
+  width: 90%;
+  max-width: 800px;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  background-color: #fff;
+  --bg-image: none;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  inset: 0;               
+  background-image: var(--bg-image);
+  background-size: cover;
+  background-position: center;
+  filter: blur(20px) brightness(1.8);
+  opacity: 0.05;           
+  z-index: 1;        
+}
+
+.slides {
+  position:relative; padding-bottom:56.25%; height:0;
+  z-index: 2;
+}
+.slide {
+  position:absolute; top:0; left:0;
+  width:100%; height:100%; object-fit:cover;
+  opacity:0; transition:opacity .6s ease-in-out;
+}
+.slide.active { opacity:1; }
+.nav {
+  position:absolute; top:50%; transform:translateY(-50%);
+  background:rgba(0,0,0,0.4); border:none; color:#fff;
+  font-size:2rem; padding:.4rem .8rem; cursor:pointer;
+  border-radius:50%; user-select:none; transition:.3s;
+  height: 8vh;
+  width: 8vh;
+}
+.nav:hover { background:rgba(0,0,0,0.6); }
+.prev { left:1rem; }
+.next { right:1rem; }
+.dots {
+  position:absolute; bottom:1rem; width:100%; text-align:center;
+}
+.dot {
+  display:inline-block; width:12px; height:12px;
+  margin:0 6px; background:rgba(255,255,255,0.6);
+  border-radius:50%; cursor:pointer; transition:.3s;
+}
+.dot.active,
+.dot:hover { background:#fff; }
+
+.slide {
+  will-change: opacity;
+  backface-visibility: hidden;
+}
+
+.nav, .dots {
+  z-index: 3;
+}
+
+.title {
+  font-family: -apple-system, BlinkMacSystemFont,
+               "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 3rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  text-align: center;
+  background: linear-gradient(45deg, #ff416c, #ff4b2b, #ffe53b);
+  background-size: 200% 200%;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: gradientShift 5s ease infinite;
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.title::after {
+  content: '';
+  display: block;
+  width: 100px;
+  height: 4px;
+  background: #ff4b2b;
+  margin: 0.5rem auto 0;
+  border-radius: 2px;
+}
+
+.title:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+  text-shadow: 0 0 8px rgba(255,65,108,0.6), 
+               0 0 16px rgba(255,75,43,0.4);
+}
+
+@keyframes gradientShift {
+  0%   { background-position: 0%   50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0%   50%; }
+}
